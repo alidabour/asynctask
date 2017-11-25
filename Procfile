@@ -1,1 +1,1 @@
-web: gunicorn server_sanic:app --worker-class sanic.worker.GunicornWorker
+web: gunicorn app:app --worker-class sanic.worker.GunicornWorker

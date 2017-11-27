@@ -1,5 +1,5 @@
 from sanic import Sanic
-from sanic.response import json
+from sanic.response import text
 from signal import signal,SIGINT
 from multiprocessing import Event
 import uvloop
@@ -16,7 +16,7 @@ async def test(request):
 	# 	INSERT INTO logquery(query) VALUES($1)
 	# 	''', str(request.args))
 	# await conn.close()
-	return json({"hello": request.args})
+	return text("OK",status=200)
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=8000, debug = False)

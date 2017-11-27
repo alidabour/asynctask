@@ -5,7 +5,6 @@ from multiprocessing import Event
 import uvloop
 import asyncio
 import asyncpg
-from logqueryinsert import DBHelper
 
 
 app = Sanic()

@@ -4,23 +4,20 @@ from signal import signal,SIGINT
 from multiprocessing import Event
 import uvloop
 import asyncio
+import asyncpg
+from logqueryinsert import DBHelper
 
-# asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+
 app = Sanic()
 
-
-@app.route("/")
+@app.route("/adserver")
 async def test(request):
-    return json({"hello": "Sanic"})
+    conn = await asyncpg.connect('postgres://aglziifkvghija:e88c7cf121436073c5f21b1d658e1b0d2250d697a281b23ad129564d8fa39226@ec2-174-129-193-169.compute-1.amazonaws.com:5432/dbda36k41dj2f2',password='e88c7cf121436073c5f21b1d658e1b0d2250d697a281b23ad129564d8fa39226')
+	await conn.execute('''
+		INSERT INTO logquery(query) VALUES($1)
+		''', str(request.args))
+	await conn.close()
+	return json({"hello": request.args})
 
-# asyncio.set_event_loop(uvloop.new_event_loop())
-# server = app.create_server(host="0.0.0.0",port=8000)
-# loop = asyncio.get_event_loop()
-# task = asyncio.ensure_future(server)
-# signal(SIGINT,lambda s,f: loop.stop())
-# try:
-# 	loop.run_forever()
-# except:
-# 	loop.stop()
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug = False,workers =4)
+	app.run(host="0.0.0.0", port=8000, debug = False,workers =4)

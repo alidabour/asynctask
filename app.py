@@ -19,4 +19,4 @@ async def test(request):
 	return json({"hello": request.args})
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=8000, debug = False,workers =4)
+	app.run(host="0.0.0.0", port=8000, debug = False)

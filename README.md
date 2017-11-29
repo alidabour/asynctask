@@ -51,6 +51,7 @@
     search about Tool to do it for me.(This is my idea about "Stress test")
 
 10-If you have anything else to tell us, please do.
+    
     Thank you for the opportunity to apply for the Python Developer role at your company.
     I'm looking for opportunities to grow in my career.
     I look forward to hearing from you soon.

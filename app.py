@@ -22,8 +22,7 @@ async def connectDB():
 	conn = await asyncpg.connect(database=url.path[1:],
 		user=url.username,
 		password=url.password,
-		host=url.hostname,
-		port=url.port)
+		host=url.hostname)
 	return conn
 
 async def insert_query(conn,query):

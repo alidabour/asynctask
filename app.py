@@ -24,7 +24,7 @@ async def connectDB():
 	# 	password=url.password)
 	print(url)
 	print(url.username)
-	print(ur.path[1:])
+	print(url.path[1:])
 	return conn
 
 async def insert_query(conn,query):
